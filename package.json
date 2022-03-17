@@ -1,0 +1,26 @@
+{
+  "name": "terminal",
+  "version": "0.0.1",
+  "description": "A JavaScript Terminal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BerkeliumLabs/terminal.git"
+  },
+  "keywords": [
+    "javascript",
+    "terminal"
+  ],
+  "author": "Buddhi Kavindra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BerkeliumLabs/terminal/issues"
+  },
+  "homepage": "https://github.com/BerkeliumLabs/terminal#readme",
+  "devDependencies": {
+    "electron": "^17.1.2"
+  }
+}

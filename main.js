@@ -1,9 +1,32 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const os = require('os');
-const pty = require('node-pty');
+const express = require('express');
+const expressApp = express();
+const bodyParser = require('body-parser');
+const cors = require('cors');
 
-const shellApp = os.platform() === 'win32' ? 'powershell.exe' : 'bash';
+expressApp.set('view engine', 'ejs');
+
+expressApp.use(express.static('public'));
+
+expressApp.use(cors());
+
+expressApp.use(bodyParser.urlencoded({ extended: false }));
+expressApp.use(bodyParser.json());
+
+expressApp.get('/', (req, res) => {
+    res.render('pages/index');
+});
+
+expressApp.get('/api', (req, res) => {
+    return res.send('Namo Buddhaya!');
+});
+
+expressApp.listen(5656, () => {
+    console.log('http://localhost:5656');
+});
+
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -16,23 +39,8 @@ const createWindow = () => {
         }
     });
 
-    win.loadURL(`${__dirname}/index.html`);
-
-    const ptyProcess = pty.spawn(shellApp, [], {
-        name: 'xterm-color',
-        cols: 80,
-        rows: 30,
-        cwd: process.env.HOME,
-        env: process.env
-    });
-
-    ptyProcess.onData((data) => {
-        process.stdout.write(data);
-    });
-
-    ptyProcess.write('ls\r');
-    ptyProcess.resize(100, 40);
-    ptyProcess.write('ls\r');
+    //win.loadURL(`${__dirname}/index.html`);
+    win.loadURL('http://localhost:5656');
 }
 
 app.whenReady().then(() => {

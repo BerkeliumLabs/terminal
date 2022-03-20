@@ -18,6 +18,7 @@ bkTerminal.onKey((key) => {
         if (nowLine === 'cd') {
             bkTerminal.write('Namo Buddhaya!');
         }
+        load('/api');
     } else if (key.domEvent.keyCode === 8) {
         if (nowLine) {
             nowLine = nowLine.slice(0, nowLine.length - 1);
@@ -34,6 +35,22 @@ bkTerminal.onKey((key) => {
         bkTerminal.write(key.key);
     }
 });
+
+function load(url) {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            //callback(xhr.response);
+            bkTerminal.write(xhr.response);
+            console.log(xhr);
+            return (xhr.response);
+        }
+    }
+
+    xhr.open('GET', url, true);
+    xhr.send('');
+}
 
 /* bkTerminal.onData(e => {
     //bkTerminal.write(e);

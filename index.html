@@ -5,12 +5,15 @@
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <link rel="stylesheet" href="node_modules/xterm/css/xterm.css"/>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="node_modules/xterm/lib/xterm.js"></script>
     <title>Berkelium Terminal</title>
   </head>
   <body>
-    <h1>Berkelium Terminal</h1>
-    We are using Node.js <span id="node-version"></span>,
-    Chromium <span id="chrome-version"></span>,
-    and Electron <span id="electron-version"></span>.
+    <div id="bk-terminal" class="bk-terminal">
+
+    </div>
+    <script src="index.js"></script>
   </body>
 </html>

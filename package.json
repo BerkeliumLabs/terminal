@@ -4,7 +4,8 @@
   "description": "A JavaScript Terminal",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "rebuild": "electron-rebuild"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,10 @@
   "homepage": "https://github.com/BerkeliumLabs/terminal#readme",
   "devDependencies": {
     "electron": "^17.1.2"
+  },
+  "dependencies": {
+    "electron-rebuild": "^3.2.7",
+    "node-pty": "^0.10.0",
+    "xterm": "^4.18.0"
   }
 }

@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.bk-terminal {
+    width: 100%;
+    height: 100vh;
+    .terminal {
+        width: 100%;
+        height: 100vh;
+        .xterm-viewport {
+            width: 100% !important;
+        }
+    }
+}

@@ -5,6 +5,7 @@ const express = require('express');
 const expressApp = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const BkTerminal = require('./app/terminal');
 
 expressApp.set('view engine', 'ejs');
 
@@ -19,8 +20,12 @@ expressApp.get('/', (req, res) => {
     res.render('pages/index');
 });
 
-expressApp.get('/api', (req, res) => {
-    return res.send('Namo Buddhaya!');
+expressApp.get('/api', async (req, res) => {
+    let output = await BkTerminal.execute('ls').then(data => {
+        return res.send(JSON.stringify(data));
+    });
+    console.log(output);
+    //return res.send(JSON.stringify(output));
 });
 
 expressApp.listen(5656, () => {
